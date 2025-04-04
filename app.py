@@ -1,3 +1,15 @@
+from flask import Flask, request, render_template, redirect, url_for, abort
+from database import Session, User, Answer
+from config import Config
+from datetime import datetime
+import hashlib
+
+# Валидация переменных окружения
+Config.validate()
+
+app = Flask(__name__)
+app.secret_key = Config.SECRET_KEY
+
 @app.route('/submit-test', methods=['POST'])
 def submit_test():
     session = Session()
@@ -11,7 +23,7 @@ def submit_test():
     color = request.form.get('color')
     description = request.form.get('description')
 
-    if color is None or description is None:
+    if not color or not description:  # Проверка на наличие значений
         return abort(400)  # Возврат 400 Bad Request, если параметры отсутствуют
 
     answer = Answer(
