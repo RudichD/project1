@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ежедневный тест</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="vkuiCard">
+        <h2>День {{ day }} из 30</h2>
+
+        <!-- Блок с видео -->
+        <div class="video-container">
+            <video controls width="100%">
+                <source src="https://www.youtube.com/watch?v=loQlGtx-LC0" type="video/mp4">
+            </video>
+        </div>
+
+        <form method="POST" action="{{ url_for('submit_test') }}">
+            <div class="vkuiFormItem">
+                <label>Выберите цвет с неприятным звуком:</label>
+                <select name="color" required>
+                    <option value="red">Красный</option>
+                    <option value="blue">Синий</option>
+                    <option value="green">Зеленый</option>
+                </select>
+            </div>
+
+            <div class="vkuiFormItem">
+                <label>Опишите ваши ощущения:</label>
+                <textarea name="description" required></textarea>
+            </div>
+
+            <button type="submit" class="vkuiButton vkuiButton--primary">
+                Отправить ответ
+            </button>
+        </form>
+    </div>
+</body>
+</html>
