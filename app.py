@@ -9,7 +9,6 @@ from config import Config
 app = Flask(__name__)
 app.secret_key = Config.SECRET_KEY
 
-
 def verify_vk_signature():
     params = request.args.to_dict()
     sign = params.pop('sign', '')
@@ -18,12 +17,15 @@ def verify_vk_signature():
     calculated = hashlib.md5((string + Config.SERVICE_KEY).encode()).hexdigest()
     return sign == calculated
 
-
 @app.before_request
 def check_auth():
     if not verify_vk_signature():
         abort(403)
 
+@app.before_request
+def redirect_http_to_https():
+    if request.headers.get('X-Forwarded-Proto') != 'https':
+        return redirect(request.url.replace('http://', 'https://', 1), code=301)
 
 @app.route('/')
 def index():
@@ -39,7 +41,6 @@ def index():
         return render_template('cycle_complete.html')
 
     return redirect(url_for('daily_test'))
-
 
 @app.route('/consent', methods=['GET', 'POST'])
 def consent():
@@ -59,7 +60,6 @@ def consent():
 
     return render_template('consent.html')
 
-
 @app.route('/daily-test')
 def daily_test():
     session = Session()
@@ -70,7 +70,6 @@ def daily_test():
         return render_template('cycle_complete.html')
 
     return render_template('test.html', day=db_user.current_day)
-
 
 @app.route('/submit-test', methods=['POST'])
 def submit_test():
@@ -96,7 +95,6 @@ def submit_test():
 
     session.commit()
     return redirect(url_for('daily_test'))
-
 
 if __name__ == '__main__':
     app.run(debug=False)

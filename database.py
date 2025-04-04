@@ -25,8 +25,15 @@ class Answer(Base):
     timestamp = Column(DateTime, default=datetime.now)
     cycle = Column(Integer)
 
-# Для Heroku
-DATABASE_URL = os.environ.get('DATABASE_URL', '').replace("postgres://", "postgresql://")
+# Проверка переменной окружения
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL не установлена. Пожалуйста, установите переменную окружения.")
+
+# Замена схемы, если необходимо
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
+
+# Создание таблиц
 Base.metadata.create_all(engine)
