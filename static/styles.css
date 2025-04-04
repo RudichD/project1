@@ -1,26 +1,70 @@
+/* Общие стили для тела страницы */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     padding: 20px;
     max-width: 600px;
     margin: 0 auto;
+    background-color: #f4f4f4; /* Светлый фон для всей страницы */
 }
 
+/* Стили для карточки */
 .vkuiCard {
-    background: #fff;
+    background: #ffffff;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Более заметная тень */
+    transition: transform 0.3s; /* Плавный эффект при наведении */
 }
 
+/* Эффект при наведении на карточку */
+.vkuiCard:hover {
+    transform: translateY(-5px); /* Подъем карточки при наведении */
+}
+
+/* Стили для кнопки */
 .vkuiButton--primary {
-    background: #5181B8;
+    background: #5181B8; /* Основной цвет кнопки */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px; /* Увеличенный внутренний отступ */
     border-radius: 8px;
     cursor: pointer;
+    font-size: 16px; /* Увеличенный размер шрифта */
+    transition: background 0.3s; /* Плавный эффект изменения фона */
 }
 
+/* Эффект при наведении на кнопку */
+.vkuiButton--primary:hover {
+    background: #3e6f9c; /* Темнее при наведении */
+}
+
+/* Стили для контейнера видео */
 .video-container {
     margin: 20px 0;
+    border-radius: 12px; /* Закругление углов контейнера видео */
+    overflow: hidden; /* Скрыть лишние части */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для контейнера видео */
+}
+
+/* Стили для текстового поля и выбора */
+select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Светлая граница */
+    border-radius: 4px;
+    box-sizing: border-box; /* Учитывать отступы и границы в ширине */
+    margin-top: 5px; /* Отступ сверху */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Стили для текстового поля */
+textarea {
+    height: 100px; /* Высота текстового поля */
+    resize: none; /* Запретить изменение размера */
+}
+
+/* Стили для заголовков */
+h2 {
+    color: #333; /* Темный цвет текста */
+    text-align: center; /* Центрирование заголовка */
 }

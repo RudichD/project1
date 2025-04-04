@@ -1,8 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ежедневный тест</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #2c3e50, #4ca1af); /* Темный градиент для фона */
+            margin: 0;
+            padding: 20px;
+            color: #ecf0f1; /* Цвет текста */
+        }
+
+        .vkuiCard {
+            background: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон для карточки */
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Увеличенная тень для более выразительного эффекта */
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            transition: transform 0.3s; /* Плавный эффект при наведении */
+        }
+
+        .vkuiCard:hover {
+            transform: translateY(-5px); /* Подъем карточки при наведении */
+        }
+
+        h2 {
+            color: #2980b9; /* Цвет заголовка */
+            text-align: center;
+            margin-bottom: 20px; /* Добавлен отступ снизу */
+        }
+
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+            border: 5px solid #2980b9; /* Улучшенная рамка вокруг видео */
+            border-radius: 12px; /* Закругление углов контейнера видео */
+            overflow: hidden; /* Скрыть лишние части */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Тень для контейнера видео */
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px; /* Закругление углов видео */
+        }
+
+        .vkuiFormItem {
+            margin-bottom: 20px; /* Увеличен отступ снизу */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e; /* Более темный цвет текста для меток */
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 12px; /* Увеличен внутренний отступ */
+            border: 1px solid #ccc;
+            border-radius: 8px; /* Закругление углов */
+            box-sizing: border-box;
+            font-size: 16px; /* Увеличен размер шрифта */
+        }
+
+        textarea {
+            height: 100px;
+            resize: none; /* Запретить изменение размера */
+        }
+
+        .vkuiButton {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px; /* Увеличен внутренний отступ */
+            border-radius: 8px; /* Закругление углов */
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px; /* Увеличен размер шрифта */
+            transition: background-color 0.3s, transform 0.3s; /* Плавный эффект изменения фона */
+        }
+
+        .vkuiButton:hover {
+            background-color: #0056b3; /* Темнее при наведении */
+            transform: scale(1.05); /* Увеличение кнопки при наведении */
+        }
+
+        /* Стили для ошибок или уведомлений */
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="vkuiCard">
@@ -10,8 +105,9 @@
 
         <!-- Блок с видео -->
         <div class="video-container">
-            <video controls width="100%">
+            <video controls>
                 <source src="https://www.youtube.com/watch?v=loQlGtx-LC0" type="video/mp4">
+                Ваш браузер не поддерживает видео.
             </video>
         </div>
 
@@ -30,7 +126,7 @@
                 <textarea name="description" required></textarea>
             </div>
 
-            <button type="submit" class="vkuiButton vkuiButton--primary">
+            <button type="submit" class="vkuiButton">
                 Отправить ответ
             </button>
         </form>
