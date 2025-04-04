@@ -1,10 +1,9 @@
 import os
 
-
 class Config:
     VK_API_VERSION = '5.199'
-    SECRET_KEY = os.environ.get('Truba1636')  # Замените через настройки окружения на Render.com
-    SERVICE_KEY = os.environ.get('380763d6380763d6380763d6bf3b29eca733807380763d65fe9ff71c2fc26f2673d3a56')  # Ваш ключ из ВКонтакте
+    SECRET_KEY = os.environ.get('SECRET_KEY')  # Убедитесь, что эта переменная установлена на Render.com
+    SERVICE_KEY = os.environ.get('SERVICE_KEY')  # Убедитесь, что эта переменная установлена на Render.com
 
     @staticmethod
     def validate():
