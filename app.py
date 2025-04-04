@@ -6,6 +6,8 @@ import hashlib
 import os
 from config import Config
 
+Config.validate()
+
 app = Flask(__name__)
 app.secret_key = Config.SECRET_KEY
 
